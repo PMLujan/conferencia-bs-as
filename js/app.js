@@ -37,9 +37,12 @@ cantidad.addEventListener('input',function(e){
     datos[e.target.id]= e.target.value;
 });
 
-
 select.addEventListener('input',function(e){
    datos[e.target.id]=e.target.value;
+});
+borrar.addEventListener('click',function(e){
+    e.preventDefault();
+    formulario.reset();
 });
 
 resumen.addEventListener('click',function(e){
@@ -61,11 +64,6 @@ resumen.addEventListener('click',function(e){
                 }        
 });
 
-borrar.addEventListener('click',function(e){
-    e.preventDefault();
-    formulario.reset();
-})
-
 function mostrarValor(valor){
     const mensaje=document.createElement('P');
           mensaje.textContent= `Total a pagar: $ ${valor}`;
@@ -77,8 +75,7 @@ function mostrarValor(valor){
           botonEnviar.addEventListener('click', function(e){
                              e.preventDefault();
                              datos[e.target.id]=e.target.value;
-                             const {nombre,apellido,correo} = datos;
-                             if(nombre == "" || apellido == "" || correo ==""){
+                             if(datos.nombre == "" || datos.apellido == "" || datos.correo ==""){
                                  mostrarMensaje('Todos los campos son obligatorio');
                              }else{
                                  compraExitosa('Te enviamos un correo para continuar con tu compra')
@@ -91,16 +88,14 @@ function mostrarValor(valor){
           botonCerrar.addEventListener('click', function(e){
                        e.preventDefault();
                        formulario.reset();
-                       contenedorCompra.remove()
+                       contenedorCompra.remove();
        });       
           
     const contenedorCompra=document.createElement('div');  
           contenedorCompra.appendChild(mensaje);
           contenedorCompra.appendChild(botonEnviar);
           contenedorCompra.appendChild(botonCerrar);     
-          contenedorCompra.classList.add('contenedorCompra');   
-    botonesFormulario.remove();
-    resumen.remove();
+          contenedorCompra.classList.add('contenedorCompra'); 
     formulario.appendChild(contenedorCompra);
 };
 
@@ -127,7 +122,5 @@ function compraExitosa(mensaje){
      setTimeout(() => {
         contenedorCompraExitosa.remove();
         formulario.reset();
-        formulario.appendChild(borrar);
-        formulario.appendChild(resumen);
      }, 3000);
 }

@@ -300,8 +300,7 @@ img{
     display: inline-block;
     width: 50%;
     height: 200px;
-    margin-left: 200px;
-    margin-top: 50px;
+    margin: 20px 0 20px 200px;
     text-align: center;
     background: rgb(62,65,68);
     background: radial-gradient(circle, rgba(62,65,68,1) 0%, rgba(165,167,172,0.7740138291644783) 100%);
@@ -316,8 +315,8 @@ img{
     .contenedorCompra{
         width: 100%;
         margin-left: 0;
-        height: 300px;
-        padding-top: 100px;
+        height: 200px;
+        padding-top: 50px;
     }
 }
 .footer-tickets{
