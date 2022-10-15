@@ -60,8 +60,8 @@ resumen.addEventListener('click',function(e){
                     valor= valor - (valor * 15 /100) ;
                     mostrarValor(Math.floor(valor * parseFloat(cantidadDeEntradas)))
                 }else{
-                    mostrarMensaje('Todos los campos son obligatorios');
-                }        
+                    mostrarMensaje("Todos los campos son obligatotios")
+                }
 });
 
 function mostrarValor(valor){
@@ -71,15 +71,18 @@ function mostrarValor(valor){
     const botonEnviar=document.createElement('INPUT');
           botonEnviar.setAttribute("type","submit");
           botonEnviar.value= "comprar";
-          botonEnviar.setAttribute("id","btn-compra");
+          botonEnviar.setAttribute("id","btn-compra");     
           botonEnviar.addEventListener('click', function(e){
                              e.preventDefault();
-                             datos[e.target.id]=e.target.value;
-                             if(datos.nombre == "" || datos.apellido == "" || datos.correo ==""){
-                                 mostrarMensaje('Todos los campos son obligatorio');
-                             }else{
-                                 compraExitosa('Te enviamos un correo para continuar con tu compra')
-                             }
+                             let validarCompra= Object.keys(datos)
+                               for(let i=0; i< validarCompra.length ; i++){
+                                let compra = validarCompra[i];
+                                if(datos[compra] === ""){
+                                  contenedorCompra.remove();
+                                  mostrarMensaje(`Complete ${compra}`);
+                                }
+                                compraExitosa('');
+                            }
                          });
     const botonCerrar=document.createElement('INPUT');
           botonCerrar.setAttribute("type", "submit");
@@ -97,6 +100,10 @@ function mostrarValor(valor){
           contenedorCompra.appendChild(botonCerrar);     
           contenedorCompra.classList.add('contenedorCompra'); 
     formulario.appendChild(contenedorCompra);
+
+    setTimeout(() => {
+        contenedorCompra.remove()
+    }, 6000);
 };
 
 function mostrarMensaje(mensaje){
@@ -112,15 +119,6 @@ function mostrarMensaje(mensaje){
 };
 
 function compraExitosa(mensaje){
-    const contenedorCompra=document.querySelector('.contenedorCompra')
-    const contenedorCompraExitosa=document.createElement('div');  
-          contenedorCompraExitosa.textContent=mensaje;
-          contenedorCompraExitosa.classList.add('felicitaciones');
-          contenedorCompra.remove();
-     formulario.appendChild(contenedorCompraExitosa)
-
-     setTimeout(() => {
-        contenedorCompraExitosa.remove();
-        formulario.reset();
-     }, 3000);
+          const contenedorCompra=document.querySelector('.contenedorCompra')
+                contenedorCompra.remove();
 }
