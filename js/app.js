@@ -78,6 +78,7 @@ function mostrarValor(valor){
                       e.preventDefault();
                       const {nombre , apellido , correo}=datos;
                       if(nombre === "" || apellido ==="" || correo === ""){
+                        contenedorCompra.remove();
                         mostrarMensaje('Todos los campos son obligatorios');
                       }else{
                         compraExitosa('Gracias por su compra!')
@@ -106,8 +107,8 @@ function mostrarMensaje(mensaje){
     const error = document.createElement('P');
           error.textContent= mensaje;
           error.classList.add('error');
-          
-    formulario.appendChild(error);
+        
+    formulario.appendChild(error); 
 
     setTimeout(() => {
         error.remove();
