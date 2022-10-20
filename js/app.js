@@ -127,6 +127,6 @@ function compraExitosa(mensaje){
         mensajeCompra.remove();
     }, 3000);
      setTimeout(() => {
-        window.location.href= "http://127.0.0.1:5500/index.html";
+        location.reload();
     }, 4000);
 };
