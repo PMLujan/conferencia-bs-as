@@ -359,3 +359,69 @@ img{
     margin-top: 20px;
     font-size: 40px;  
 }
+
+/*BOTON UP PAGINA*/
+.btnUp-contenedor{
+    position: fixed;
+    bottom: 3rem;
+    right: 2rem;
+    width: 3.6rem;
+    height: 3.6rem;
+    z-index: -1;
+}
+@media (max-width:700px){
+    .btnUp-contenedor{
+        right: .3rem;
+    }
+    .icon-btnUp{
+       opacity: .5;
+    }
+}
+.icon-btnUp{
+    width: 0;
+    height: 0;
+    background-color: var(--amarillo);
+    border-radius: 50%;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    transition: .2s;
+}
+.icon-btnUp i{
+    position: absolute;
+    font-size: 1.7rem;
+    top: 48%;
+    left:50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: .2s;
+}
+.show{
+    z-index: 10;
+}
+.show .icon-btnUp{
+    animation: btnUp .3s ease-in-out;
+    width: 3.6rem;
+    height: 3.6rem;
+    z-index: 11;
+}
+.show i{
+    transform: translate(-50%,-50%) scale(1);
+}
+
+@keyframes btnUp{
+    0%{
+        width: 0;
+        height: 0;
+    }
+    50%{
+        width: 8rem;
+        height: 8rem;
+    }
+    100%{
+        width: 3.6rem;
+        height: 3.6rem;
+    }
+
+}
